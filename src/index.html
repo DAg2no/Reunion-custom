@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario y Generación de Imagen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6"></div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Formulario Reunión Fin de Semana</h1>
+                <form id="meetingForm">
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha:</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha">
+                    </div>
+                    <div class="mb-3">
+                        <label for="presidente" class="form-label">Presidente:</label>
+                        <input type="text" class="form-control" id="presidente" name="presidente"
+                            placeholder="agrege el nombre del presidente">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cancion" class="form-label">Canción de inicio:</label>
+                        <input type="text" class="form-control" id="cancion" name="cancion"
+                            placeholder="agrege la canción de inicio">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tema" class="form-label">Tema discurso público:</label>
+                        <input type="text" class="form-control" id="tema" name="tema"
+                            placeholder="agrege el tema del discurso público">
+                    </div>
+                    <div class="mb-3">
+                        <label for="discur" class="form-label">Disursante:</label>
+                        <input type="text" class="form-control" id="discurso" name="discurso"
+                            placeholder="nombre del discursante">
+                    </div>
+                    <div class="mb-3">
+                        <label for="congregacion" class="form-label">Congregación:</label>
+                        <input type="text" class="form-control" id="congregacion" name="congregacion"
+                            placeholder="nombre de la congregación">
+                    </div>
+                    <div class="mb-3">
+                        <label for="atalaya" class="form-label">Estudio Atalaya:</label>
+                        <input type="text" class="form-control" id="atalaya" name="atalaya"
+                            placeholder="nombre del estudio atalaya">
+                    </div>
+                    <div class="mb-3">
+                        <label for="conductor" class="form-label">Conductor:</label>
+                        <input type="text" class="form-control" id="conductor" name="conductor"
+                            placeholder="nombre del conductor">
+                    </div>
+                    <div class="mb-3">
+                        <label for="lector" class="form-label">Lector:</label>
+                        <input type="text" class="form-control" id="lector" name="lector" 
+                        placeholder="nombre del lector">
+                    </div>
+                    <div class="mb-3">
+                        <label for="oracion" class="form-label">Oración de conclusión:</label>
+                        <input type="text" class="form-control" id="oracion" name="oracion" 
+                        placeholder="nombre del orador">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="generateImage">Generar Imagen</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5" id="image-container" style="display: none;">
+        <div class="card p-4">
+            <div class="card-body">
+                <div class="container title-custom">
+                    <h2>reunión fin de semana</h2>
+                    <div class="row pt-5 d-flex align-items-start">
+                        <div class="col-4 flex-column text-start">
+                            <div>
+                                <h5>Fecha:</h5>
+                            </div>
+                            <div>
+                                <h5>Presidente:</h5>
+                            </div>
+                            <div>
+                                <h5>Canción de inicio:</h5>
+                            </div>
+                            <div>
+                                <h5>Tema discurso público:</h5>
+                            </div>
+                            <div>
+                                <h5>Discursante:</h5>
+                            </div>
+                            <div>
+                                <h5>Congregación:</h5>
+                            </div>
+                            <div>
+                                <h5>Estudio Atalaya:</h5>
+                            </div>
+                            <div>
+                                <h5>Conductor:</h5>
+                            </div>
+                            <div>
+                                <h5>Lector:</h5>
+                            </div>
+                            <div>
+                                <h5>Oración de conclusión:</h5>
+                            </div>
+                        </div>
+                        <div class="col-8 d-flex flex-column text-center align-items-center custom-details">
+                            <p id="fecha-display" class="pb-0 mb-0"></p>
+                            <p id="presidente-display" class="pb-0 mb-0"></p>
+                            <p id="cancion-display" class="pb-0 mb-0"></p>
+                            <p id="tema-display" class="pb-0 mb-0"></p>
+                            <p id="discurso-display" class="pb-0 mb-0"></p>
+                            <p id="congregacion-display" class="pb-0 mb-0"></p>
+                            <p id="atalaya-display" class="pb-0 mb-0"></p>
+                            <p id="conductor-display" class="pb-0 mb-0"></p>
+                            <p id="lector-display" class="pb-0 mb-0"></p>
+                            <p id="oracion-display" class="pb-0 mb-0"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="container mt-3 text-center mb-5">
+        <a id="download-link" class="btn btn-success" style="display: none;">Descargar Imagen</a>
+        <button id="print-button" class="btn btn-info" style="display: none;">Imprimir Imagen</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
