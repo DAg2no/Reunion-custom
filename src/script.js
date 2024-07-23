@@ -33,18 +33,7 @@ document.getElementById('generateImage').addEventListener('click', function () {
         link.href = canvas.toDataURL();
         link.download = 'Reunión_Fin_de_Semana.png';
         link.style.display = 'block';
-
-        // Mostrar el botón de impresión
-        const printButton = document.getElementById('print-button');
-        printButton.style.display = 'block';
-        printButton.onclick = function() {
-            const printWindow = window.open('', '_blank');
-            printWindow.document.write('<html><head><title>Imprimir Imagen</title>');
-            printWindow.document.write('<style>body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }</style></head><body>');
-            printWindow.document.body.appendChild(canvas);
-            printWindow.document.write('</body></html>');
-            printWindow.document.close();
-            printWindow.print();
-        };
+    }).catch(error => {
+        console.error('Error generating image:', error);
     });
 });
